@@ -3,7 +3,14 @@ var React = require('react');
 var Weather = React.createClass({
   render: function() {
     return (
-      <div>{this.props.currentLocation.longitude}</div>
+      <div>
+        {this.props.currentCity.toString()}
+        <br></br>
+        {this.props.currentWeather.toString()}
+        <br></br>
+        {this.props.currentTemp.toString()}
+        <br></br>
+      </div>
     );
   }
 });
