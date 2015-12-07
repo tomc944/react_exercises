@@ -3,7 +3,9 @@ var React = require('react');
 var Clock = React.createClass({
   render: function() {
     return (
-      <div>{this.props.currentTime.toString()}</div>
+      <div>
+        <h3>Clock</h3>
+        {this.props.currentTime.toString()}</div>
     );
   }
 });

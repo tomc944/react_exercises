@@ -6,9 +6,9 @@ var WeatherClock = React.createClass ({
   getInitialState: function(){
     return {currentTime: new Date(),
       currentLocation: {},
-      currentCity: "San Francisco",
-      currentTemp: "65d",
-      currentWeather: "Sunny + Tofu"};
+      currentCity: "",
+      currentTemp: "",
+      currentWeather: ""};
   },
   getLocation: function() {
     var success = function(position) {
@@ -31,7 +31,9 @@ var WeatherClock = React.createClass ({
     request.onload = function() {
       if (request.status >= 200 && request.status < 400) {
         var data = JSON.parse(request.responseText);
-        this.setState({currentTemp: data.weather[0].icon,
+        var tempC = data.main.temp - 273.15;
+        var tempF = Math.floor(tempC * (9/5) + 32);
+        this.setState({currentTemp: tempF,
           currentWeather: data.weather[0].main,
           currentCity: data.name});
       } else {
