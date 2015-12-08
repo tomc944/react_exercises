@@ -21,15 +21,21 @@ var Autocomplete = React.createClass ({
       return [];
     }
   },
+  fillInput: function(e) {
+    this.setState({input: e.target.innerText});
+  },
   render: function() {
     return(
       <aside>
-        <input type="text" id="input" onChange={this.updateInput} />
+        <input type="text"
+               id="input"
+               onChange={this.updateInput}
+               value={this.state.input} />
         <ul>
           {
             this.updateOutput().map(function(match, i) {
-              return <li key={i}>{match}</li>;
-            })
+              return <li key={i} onClick={this.fillInput}>{match}</li>;
+            }.bind(this))
           }
         </ul>
       </aside>

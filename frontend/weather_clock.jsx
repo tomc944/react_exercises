@@ -3,6 +3,8 @@ var React = require('react'),
     Clock = require('./clock.jsx');
 
 var WeatherClock = React.createClass ({
+  // store as little as possible in state
+  // just store data; parse information as needed
   getInitialState: function(){
     return {currentTime: new Date(),
       currentLocation: {},
